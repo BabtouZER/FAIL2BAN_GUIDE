@@ -9,9 +9,9 @@ systemctl start fail2ban
 ```
 
 ### 2. Configure your rules
-A rule means the thing you want to block, here we want to block the ip addresses that try to connect to the owncloud and flask service.
+A rule means the thing you want to block, here we want to block the ip addresses that try to connect to owncloud and flask services.
 
-In the file */etc/fail2ban/jail.d/flask-login.local*, configure your rules.
+Create the file */etc/fail2ban/jail.d/flask-login.local* and configure your rules.
 
 - Example :
 
@@ -62,16 +62,16 @@ volumes:
 The file path log is here : ***/var/lib/docker/volumes/myowncloud_owncloud_data/_data/files/owncloud.log***.
 
 ### 3. For each rules, create file *.conf*
-For each rules, create the file : */etc/fail2ban/filter.d/**<nam_rule>**.conf*
+For each rules, create the file : */etc/fail2ban/filter.d/**<name_rule>**.conf*
 Inject your configuration.
 
-- Example rule *flask-login* in the file *flask-login.conf*: 
+- Example rule *flask-login* in the file *flask-login.conf*:
 ```
 [Definition]
 failregex = "message":"Login failed: '.*' \(Remote IP: '<HOST>'\)"
 ignoreregex =
 ```
-The regex depends on the message is generated when (in our case) a user is trying to connect in the auth page but his ids are bad...
+The regex depends on the message generated when (in our case) a user is trying to connect in the auth page but his ids are bad...
 
 - Example *flaskapp* log, login failed for user : 
 ```
@@ -135,7 +135,7 @@ systemctl start fail2ban
 systemctl stop fail2ban
 systemctl restart fail2ban
 ```
-- See **owncloud-login** rule logs (number of fails, IP bans, etc.) : 
+- See **owncloud-login** rule logs (number of fails, bans IP, ...) : 
 ```
 fail2ban-client status owncloud-login
 ```
@@ -149,7 +149,7 @@ Chain DOCKER-USER (1 references)
 num  target     prot opt source               destination
 1    f2b-FlaskLogin  0    --  0.0.0.0/0            0.0.0.0/0
 ```
-- See IPs ban : 
+- See ban IP(s) : 
 ```
 iptables -L f2b-FlaskLogin -n
 ```
@@ -157,7 +157,7 @@ Or :
 ```
 fail2ban-client status owncloud-login
 ```
-- Unban IP :
+- Unban IP(s) :
 ```
 fail2ban-client set flask-login unbanip 192.168.1.25
 ```
