@@ -49,7 +49,7 @@ bantime = 3600
 findtime = 600
 maxretry = 5
 ```
-In "action" we have "**iptables-docker**", we will remember this name (see the **4.**)...
+In "action" we have "**iptables-docker**", we will remember this name (see the **[4.](https://github.com/BabtouZER/FAIL2BAN_GUIDE?tab=readme-ov-file#4-configure-your-access-list)**)...
 
 The rule **SSHD** is obligatory !
 You have **to mount volumes** for each services to find the file path logs.
