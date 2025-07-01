@@ -112,7 +112,7 @@ def admin_login():
 ```
 ### 4. Configure your "access-list"
 Copy the file : */etc/fail2ban/action.d/iptables.conf* to this file : */etc/fail2ban/action.d/iptables-docker.conf*
-In the file you created (here ***iptables-docker.conf***, see the **2.**), go in the part **[Init]** and **[Definition]**, to add your settings.
+In the file you created (here ***iptables-docker.conf***, see the **[2.](https://github.com/BabtouZER/FAIL2BAN_GUIDE?tab=readme-ov-file#2-configure-your-rules)**), go in the part **[Init]** and **[Definition]**, to add your settings.
 
 - Lines to change :
 ```
